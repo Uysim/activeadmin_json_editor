@@ -3,7 +3,7 @@
 class JsonInput < Formtastic::Inputs::TextInput
   def to_html
     html = '<div class="jsoneditor-wrap">'
-    current_value = @object.public_send method
+    current_value = @object..read_attribute(:method) 
     html << builder.text_area(method, input_html_options.merge(
                                         value: (current_value.respond_to?(:to_json) ? current_value.to_json : '')))
     html << '</div>'
